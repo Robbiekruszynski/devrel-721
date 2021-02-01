@@ -1,7 +1,7 @@
+// require("dotenv").config();
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const { projectId, mnemonic } = require('./secrets.json');
 
-require('dotenv').config()
-// const { projectId, mnemonic } = require('./secrets.json');
-const HDWalletProvider = require('@truffle/hdwallet-provider');
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -63,10 +63,8 @@ module.exports = {
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     rinkeby: {
-      provider: () => new HDWalletProvider(
-          process.env.MNEMONIC,
-          `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`
-      ),
+      provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${projectId}`),
+
       network_id: 4,       // Rinkeby's id
       gas: 8500000,        
       gasPrice: 1000000000,  // 1 gwei (in wei) (default: 100 gwei)
