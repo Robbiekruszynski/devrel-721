@@ -1,6 +1,6 @@
 
 require('dotenv').config()
-const { projectId, mnemonic } = require('./secrets.json');
+// const { projectId, mnemonic } = require('./secrets.json');
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 /**
  * Use this file to configure your truffle project. It's seeded with some
@@ -46,11 +46,11 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
+    development: {
+     host: "127.0.0.1",     // Localhost (default: none)
+     port: 8545,            // Standard Ethereum port (default: none)
+     network_id: "*",       // Any network (default: none)
+    },
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
@@ -64,8 +64,9 @@ module.exports = {
     // NB: It's important to wrap the provider as a function.
     rinkeby: {
       provider: () => new HDWalletProvider(
-      process.env.MNEMONIC,
-      `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`),
+          process.env.MNEMONIC,
+          `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`
+      ),
       network_id: 4,       // Rinkeby's id
       gas: 8500000,        
       gasPrice: 1000000000,  // 1 gwei (in wei) (default: 100 gwei)
